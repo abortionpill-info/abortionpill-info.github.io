@@ -6931,8 +6931,8 @@ a .icon-rotate-90:before,a .icon-rotate-180:before,a .icon-rotate-270:before,a .
 <nav class="navbar navbar-default">
 <div class="container">
 <div class="navbar-collapse collapse">
-<form id="search-form" action="/search" class="navbar-form navbar-right" onsubmit="search" method="get">
-<input class="search-query form-control" name="qs" placeholder="Search" type="text"/>
+<form id="search-form" onsubmit="search()" class="navbar-form navbar-right" method="get">
+<input class="search-query form-control" name="qs" placeholder="Search" type="text" id="search-val"/>
 </form>
 <ul class="nav navbar-nav" id="navigation">
 <li class="">
@@ -7067,34 +7067,14 @@ function onShareClick() {
        let pregWeeks = pregnancyWeeks.toString(); document.getElementById("pregnancyWeeks").innerHTML = pregWeeks;
 document.getElementById("pregnancyDays").innerHTML = pregDays;
       }
+	    function search() {
+		    var searchvalue = document.getElementById('search-val').value;
+		    if (searchvalue) {
+			    var searchform = document.getElementById('search-form');
+			    searchform.setAttribute('action','/search?q='+searchvalue);
+		    }
+	    }
       </script>
-	<script>
-  const form = document.getElementById('search-form');
-  const resultsFrame = document.getElementById('search-results');
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const query = form.querySelector('input[name="q"]').value;
-    resultsFrame.src = `https://www.google.com/search?q=${query}`;
-  });
-</script>
-	<script>
-		function GetURLParameter(sParam)
-{
-	const resultsFrame = document.getElementById('search-results');
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) 
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) 
-        {
-		
-            resultsFrame.src = `https://www.google.com/search?q=${sParameterName[1]}`;
-        }
-    }
-}​
-	</script>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<image style="width:60pt; height:60pt;"src="/images/09.png"></image>
     <h3>Pregnancy Calculator</h3>
     <p>Enter the month and the first day of your last regular menstrual period:</p>
