@@ -7078,6 +7078,21 @@ document.getElementById("pregnancyDays").innerHTML = pregDays;
     resultsFrame.src = `https://www.google.com/search?q=${query}`;
   });
 </script>
+	<script>
+		function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}​
+	</script>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<image style="width:60pt; height:60pt;"src="/images/09.png"></image>
     <h3>Pregnancy Calculator</h3>
     <p>Enter the month and the first day of your last regular menstrual period:</p>
@@ -7124,6 +7139,7 @@ document.getElementById("pregnancyDays").innerHTML = pregDays;
 
 
 				</div>
+	<div><iframe id="search-results"></iframe></div>
 </div>
 </div>
 </div>
