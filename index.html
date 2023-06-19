@@ -6931,7 +6931,7 @@ a .icon-rotate-90:before,a .icon-rotate-180:before,a .icon-rotate-270:before,a .
 <nav class="navbar navbar-default">
 <div class="container">
 <div class="navbar-collapse collapse">
-<form action="/search" class="navbar-form navbar-right" onsubmit="search" method="get">
+<form id="search-form" action="/search" class="navbar-form navbar-right" onsubmit="search" method="get">
 <input class="search-query form-control" name="qs" placeholder="Search" type="text"/>
 </form>
 <ul class="nav navbar-nav" id="navigation">
@@ -7067,43 +7067,17 @@ function onShareClick() {
        let pregWeeks = pregnancyWeeks.toString(); document.getElementById("pregnancyWeeks").innerHTML = pregWeeks;
 document.getElementById("pregnancyDays").innerHTML = pregDays;
       }
-      function search() {
-  const searchInput = document.getElementById("search-input").value;
-  const searchResults = document.getElementById("search-results");
-  const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
-  const cx = "YOUR_CX"; // Replace with your actual CX value
+      </script>
+	<script>
+  const form = document.getElementById('search-form');
+  const resultsFrame = document.getElementById('search-results');
 
-  const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${searchInput}`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      searchResults.innerHTML = "";
-      data.items.forEach(item => {
-        const result = document.createElement("div");
-        const title = document.createElement("h3");
-        const link = document.createElement("a");
-        const snippet = document.createElement("p");
-
-        title.innerText = item.title;
-        link.href = item.link;
-        link.innerText = item.link;
-        snippet.innerText = item.snippet;
-
-        result.appendChild(title);
-        result.appendChild(link);
-        result.appendChild(snippet);
-
-        searchResults.appendChild(result);
-      });
-    })
-    .catch(error => {
-      console.error(error);
-      searchResults.innerHTML = "An error occurred while fetching search results.";
-    });
-}
-
-    </script>
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const query = form.querySelector('input[name="q"]').value;
+    resultsFrame.src = `https://www.google.com/search?q=${query}`;
+  });
+</script>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<image style="width:60pt; height:60pt;"src="/images/09.png"></image>
     <h3>Pregnancy Calculator</h3>
     <p>Enter the month and the first day of your last regular menstrual period:</p>
