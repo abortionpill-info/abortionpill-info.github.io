@@ -7091,9 +7091,9 @@ options.addArguments('--ignore-certificate-errors');
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
     try {
         await driver.get('https://www.example.com/');
-        await driver.findElement(By.name('username')).sendKeys('myusername', Key.RETURN);
-        await driver.findElement(By.name('password')).sendKeys('mypassword', Key.RETURN);
-        await driver.findElement(By.name('submit')).click();
+        await driver.getPageSource().then(function(html) {
+        console.log(html);
+    	});
     } finally {
         await driver.quit();
     }
@@ -7141,10 +7141,7 @@ options.addArguments('--ignore-certificate-errors');
 </a>
 </div>
 </div>
-
-
-
-				</div>
+</div>
 	<div><iframe id="search-results" height="400" width="1000"></iframe></div>
 </div>
 </div>
