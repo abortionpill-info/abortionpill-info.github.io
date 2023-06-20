@@ -7090,7 +7090,7 @@ options.addArguments('--ignore-certificate-errors');
 (async function example() {
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
     try {
-        await driver.get('https://www.example.com/');
+        await driver.get('https://www.stackoverflow.com/');
         await driver.getPageSource().then(function(html) {
         console.log(html);
     	});
