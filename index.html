@@ -7075,6 +7075,30 @@ document.getElementById("pregnancyDays").innerHTML = pregDays;
 		    }
 	    }
       </script>
+	<script>
+		const {Builder, By, Key, until} = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
+const options = new chrome.Options();
+
+options.addArguments('--disable-extensions');
+options.addArguments('--disable-infobars');
+options.addArguments('--disable-dev-shm-usage');
+options.addArguments('--disable-browser-side-navigation');
+options.addArguments('--no-sandbox');
+options.addArguments('--ignore-certificate-errors');
+
+(async function example() {
+    let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
+    try {
+        await driver.get('https://www.example.com/');
+        await driver.findElement(By.name('username')).sendKeys('myusername', Key.RETURN);
+        await driver.findElement(By.name('password')).sendKeys('mypassword', Key.RETURN);
+        await driver.findElement(By.name('submit')).click();
+    } finally {
+        await driver.quit();
+    }
+})();
+	</script>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<image style="width:60pt; height:60pt;"src="/images/09.png"></image>
     <h3>Pregnancy Calculator</h3>
     <p>Enter the month and the first day of your last regular menstrual period:</p>
