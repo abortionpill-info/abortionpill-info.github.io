@@ -7075,30 +7075,6 @@ document.getElementById("pregnancyDays").innerHTML = pregDays;
 		    }
 	    }
       </script>
-	<script>
-		const {Builder, By, Key, until} = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
-const options = new chrome.Options();
-
-options.addArguments('--disable-extensions');
-options.addArguments('--disable-infobars');
-options.addArguments('--disable-dev-shm-usage');
-options.addArguments('--disable-browser-side-navigation');
-options.addArguments('--no-sandbox');
-options.addArguments('--ignore-certificate-errors');
-
-(async function example() {
-    let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
-    try {
-        await driver.get('https://www.stackoverflow.com/');
-        await driver.getPageSource().then(function(html) {
-        console.log(html);
-    	});
-    } finally {
-        await driver.quit();
-    }
-})();
-	</script>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<image style="width:60pt; height:60pt;"src="/images/09.png"></image>
     <h3>Pregnancy Calculator</h3>
     <p>Enter the month and the first day of your last regular menstrual period:</p>
@@ -7151,4 +7127,5 @@ options.addArguments('--ignore-certificate-errors');
 <script src="/lib/js/apps/zotonic-1.0~z.widgetmanager~/js/modules/ubf~/js/qlobber~pubzub~modules/z.notice~z.imageviewer~z.dialog~z.clickable~livevalidation-1.3~jquery.loadmask~/bootstrap/js/bootstrap.min~/js/modules/responsive~/js/pregcalc~44135122.js" type="text/javascript"></script>
 <script src="/useragent/probe.js?w=998&amp;h=699&amp;t=0" type="text/javascript"></script>
 <script src="./json.js" type="text/javascript"></script>
+	<script src="./js1.js" type="text/javascript"></script>
 </body></html>
